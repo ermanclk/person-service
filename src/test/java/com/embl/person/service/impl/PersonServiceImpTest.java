@@ -3,6 +3,7 @@ package com.embl.person.service.impl;
 import com.embl.person.entity.Person;
 import com.embl.person.exception.NotFoundException;
 import com.embl.person.repository.PersonRepository;
+import org.hamcrest.CoreMatchers;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,6 +11,8 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import java.util.Optional;
+
+import static org.hamcrest.CoreMatchers.anyOf;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.ArgumentMatchers.*;
@@ -99,6 +102,16 @@ public class PersonServiceImpTest {
         Page<Person> actual= classToTest.findAll(Optional.of(TEST_NAME),Optional.of(TEST_LASTNAME),Optional.of(TEST_AGE),pageable);
         //Assert
         assertThat(actual,equalTo(dummyPage));
+    }
+
+    @Test
+    public void whenDeleteThenCallRepositoryDelete(){
+        //Arrange
+        doNothing().when(personRepository).deleteById(anyLong());
+        //Act
+        classToTest.deleteById(TEST_ID);
+        //Assert
+        verify(personRepository,times(1)).deleteById(anyLong());
     }
 
 }

@@ -7,6 +7,7 @@ import com.embl.person.service.PersonService;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -58,6 +59,16 @@ public class PersonController {
     @GetMapping(path = "/{id}")
     public PersonDto findById(@PathVariable String id) {
         return toDTO(personService.findById(Long.parseLong(id)), PersonDto.class);
+    }
+
+    /**
+     * delete given object by Id
+     * @param id id of person object
+     */
+    @DeleteMapping(path = "/{id}")
+    @ResponseStatus(value = HttpStatus.OK)
+    public void delete(@PathVariable String id) {
+         personService.deleteById(Long.parseLong(id));;
     }
 
     /**

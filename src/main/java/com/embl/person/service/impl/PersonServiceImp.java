@@ -58,4 +58,9 @@ public class PersonServiceImp implements PersonService {
                 age.orElse(null), paging);
     }
 
+    @Override
+    public void deleteById(long personId) {
+         personRepository.deleteById(personId);
+    }
+
 }

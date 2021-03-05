@@ -15,4 +15,6 @@ public interface PersonService {
     Person findById(long id);
 
     Page<Person> findAll(Optional<String> name, Optional<String> job, Optional<Integer> age, PageRequest of);
+
+    void deleteById(long parseLong);
 }

@@ -1,0 +1,139 @@
+{
+	"info": {
+		"_postman_id": "25a4b143-482f-4e7e-b13e-1d42924a2862",
+		"name": "person-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get Person By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v1/person/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"person",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find person by name or lastname or age",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v1/person/findAll?firstName=tester_name&lastName=lastname&age=35",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"person",
+						"findAll"
+					],
+					"query": [
+						{
+							"key": "firstName",
+							"value": "tester_name"
+						},
+						{
+							"key": "lastName",
+							"value": "lastname"
+						},
+						{
+							"key": "age",
+							"value": "35"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "save new person",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\":1,\n    \"firstName\":\"tester\",\n    \"lastName\":\"celiks\",\n    \"age\":\"34\",\n    \"favoriteColor\":\"182\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/person",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"person"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update person",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n    \"firstName\":\"erman\",\n    \"lastName\":\"celik\",\n    \"age\":\"34\",\n    \"favoriteColor\":\"182\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/person",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"person"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete person",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v1/person/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"person",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
